@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block page_title %}{{post.title}} - Read{% endblock page_title %}
+{% block page_content %}
+<h1>{{post.title}}</h1>
+<div class="mt-2 mb-5">
+    {{post.text|linebreaksbr}}
+</div>
+<div class="controls">
+    <a href="{% url 'myapp:edit-post' post.pk %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'myapp:delete-post' post.pk %}" class="btn btn-outline-danger">Delete</a>
+</div>
+{% endblock page_content %}

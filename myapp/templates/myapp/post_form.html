@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+{% if form.instance.pk %}
+Update {{post.title}}
+{% else %}
+Add New Post
+{% endif %}
+{% endblock page_title %}
+
+{% block new_post_active %}
+{% if form.instance.pk %}
+{% else %}
+active
+{% endif %}
+{% endblock new_post_active %}
+{% block page_content %}
+
+{% if form.instance.pk %}
+<h1>Edit {{form.instance.title}}</h1>
+{% else %}
+<h1>New Post</h1>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Save" class="btn btn-success">
+    <a href="{% url 'myapp:post-list' %}" class="btn btn-primary">Cancel</a>
+</form>
+
+{% endblock page_content %}

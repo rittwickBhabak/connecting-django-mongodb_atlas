@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block page_title %}All Posts{% endblock page_title %}
+{% block page_content %}
+{% for post in post_list %}
+    <div class="border p-3 my-3">
+        <h3>{{post.title}}</h3>
+        <p>{{post.text|truncatechars:"20"}}</p>
+        <a href="{% url 'myapp:read-post' post.pk %}" class="btn btn-primary">Read More</a>
+    </div>
+{% endfor %}
+{% endblock page_content %}
